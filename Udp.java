@@ -46,9 +46,7 @@ public class udpcli {
       byte[] buffer = new byte[1000];
       DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
       client.receive(reply);
-      System.out.println("Client received:\n "+new
-
-      String(reply.getData()));
+      System.out.println("Client received:\n "+new String(reply.getData()));
       client.close();
     }
     catch(Exception ex) {}
