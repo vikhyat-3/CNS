@@ -10,13 +10,11 @@ public static void main(String[] args)
     System.out.println("Server waiting");
     Socket server = se.accept();
     System.out.println("Connection established");
-    BufferedReader k = new BufferedReader (new 
-    InputStreamReader(server.getInputStream()));
+    BufferedReader k = new BufferedReader (new InputStreamReader(server.getInputStream()));
     String filename = k.readLine();
     FileReader f = null;
     BufferedReader ff = null;
-    DataOutputStream sendToClient = new 
-    DataOutputStream(server.getOutputStream());
+    DataOutputStream sendToClient = new DataOutputStream(server.getOutputStream());
     File file = new File(filename);
     if(file.exists())
     {
@@ -51,15 +49,12 @@ public static void main(String[] args)
   try
   {
     Socket client = new Socket("localhost", 1537);
-    BufferedReader k = new BufferedReader(new 
-    InputStreamReader(System.in));
+    BufferedReader k = new BufferedReader(new InputStreamReader(System.in));
     System.out.println("Enter file location:");
     String filename = k.readLine();
-    DataOutputStream sendToServer = new 
-    DataOutputStream(client.getOutputStream());
+    DataOutputStream sendToServer = new DataOutputStream(client.getOutputStream());
     sendToServer.writeBytes(filename+"\n");
-    BufferedReader i = new BufferedReader(new 
-    InputStreamReader(client.getInputStream()));
+    BufferedReader i = new BufferedReader(new InputStreamReader(client.getInputStream()));
     String string = i.readLine();
     if(string.equals("Yes"))
     {
