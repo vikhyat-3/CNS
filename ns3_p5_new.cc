@@ -23,9 +23,7 @@ int main(int argc, char *argv[])
     CommandLine cmd;
     cmd.Parse(argc, argv);
     Ptr<LteHelper> lteHelper = CreateObject<LteHelper>();
-    Ptr<PointToPointEpcHelper> epcHelper =       
-    CreateObject<PointToPointEpcHelper>();
-    
+    Ptr<PointToPointEpcHelper> epcHelper =CreateObject<PointToPointEpcHelper>();
     lteHelper->SetEpcHelper(epcHelper);
     
 //Specify configuration parameters of the objects that are being used //for the simulation. This can be done using input files (via the //ns3::ConfigStore)
