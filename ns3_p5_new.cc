@@ -57,8 +57,7 @@ int main(int argc, char *argv[])
 // interface 0 is localhost, 1 is the p2p device
     Ipv4Address remoteHostAddr = internetIpIfaces.GetAddress(1);
     Ipv4StaticRoutingHelper ipv4RoutingHelper;
-    Ptr<Ipv4StaticRouting> remoteHostStaticRouting =
-        ipv4RoutingHelper.GetStaticRouting(remoteHost->GetObject<Ipv4>());
+    Ptr<Ipv4StaticRouting> remoteHostStaticRouting =ipv4RoutingHelper.GetStaticRouting(remoteHost->GetObject<Ipv4>());
     remoteHostStaticRouting->AddNetworkRouteTo(Ipv4Address("7.0.0.0"), Ipv4Mask("255.0.0.0"), 1);
     
 //UE – User Equipment(nothing but mobile device)E-UTRAN Node B, also //known as Evolved Node B (abbreviated as eNodeB or eNB), is the //element in E-UTRA [E-UTRA is the air interface of 3rd Generation //Partnership Project (3GPP) Long Term Evolution (LTE) upgrade path for //mobile networks. ]of LTE that is the evolution of the element Node B in //UTRA of UMTS. It is the hardware that is connected to the mobile phone //network that communicates directly wirelessly with mobile handsets //(UEs), like a base transceiver station (BTS) in GSM networks. //Traditionally, a Node B has minimum functionality, and is controlled by //a Radio Network Controller (RNC). However, with an eNB, there is no //separate controller element. This simplifies the architecture and //allows lower response times. 
