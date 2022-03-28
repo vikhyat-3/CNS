@@ -45,8 +45,7 @@ main(int argc, char * argv[]) {
    // interface 0 is localhost, 1 is the p2p device
    Ipv4Address remoteHostAddr = internetIpIfaces.GetAddress(1);
    Ipv4StaticRoutingHelper ipv4RoutingHelper;
-   Ptr < Ipv4StaticRouting > remoteHostStaticRouting =
-      ipv4RoutingHelper.GetStaticRouting(remoteHost -> GetObject < Ipv4 > ());
+   Ptr < Ipv4StaticRouting > remoteHostStaticRouting =ipv4RoutingHelper.GetStaticRouting(remoteHost -> GetObject < Ipv4 > ());
    remoteHostStaticRouting -> AddNetworkRouteTo(Ipv4Address("7.0.0.0"), Ipv4Mask("255.0.0.0"), 1);
    NodeContainer ueNodes;
    NodeContainer enbNodes;
@@ -90,12 +89,9 @@ main(int argc, char * argv[]) {
    for (uint32_t u = 0; u < ueNodes.GetN(); ++u) {
       ++ulPort;
       ++otherPort;
-      PacketSinkHelper dlPacketSinkHelper("ns3::UdpSocketFactory",
-         InetSocketAddress(Ipv4Address::GetAny(), dlPort));
-      PacketSinkHelper ulPacketSinkHelper("ns3::UdpSocketFactory",
-         InetSocketAddress(Ipv4Address::GetAny(), ulPort));
-      PacketSinkHelper packetSinkHelper("ns3::UdpSocketFactory",
-         InetSocketAddress(Ipv4Address::GetAny(), otherPort));
+      PacketSinkHelper dlPacketSinkHelper("ns3::UdpSocketFactory",InetSocketAddress(Ipv4Address::GetAny(), dlPort));
+      PacketSinkHelper ulPacketSinkHelper("ns3::UdpSocketFactory",InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+      PacketSinkHelper packetSinkHelper("ns3::UdpSocketFactory",InetSocketAddress(Ipv4Address::GetAny(), otherPort));
       serverApps.Add(dlPacketSinkHelper.Install(ueNodes.Get(u)));
       serverApps.Add(ulPacketSinkHelper.Install(remoteHost));
       serverApps.Add(packetSinkHelper.Install(ueNodes.Get(u)));
